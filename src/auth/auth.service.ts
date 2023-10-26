@@ -8,6 +8,7 @@ import { LoginUserDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
+
 @Injectable()
 export class AuthService {
     constructor(
@@ -84,4 +85,5 @@ export class AuthService {
             throw new HttpException('Refresh token is not valid', HttpStatus.BAD_REQUEST)
         }
     }
+
 }
