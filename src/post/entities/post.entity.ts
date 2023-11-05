@@ -1,5 +1,6 @@
+import { Category } from "src/category/entities/category.entity";
 import { User } from "src/user/entities/user.entity";
-import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Post {
@@ -23,9 +24,12 @@ export class Post {
     @CreateDateColumn()
     created_at: Date;
 
-    @CreateDateColumn()
+    @UpdateDateColumn()
     updated_at: Date;
     
     @ManyToOne(() => User, (user) => user.posts)
-    user:User
+    user:User;
+
+    @ManyToOne(() => Category, (category) => category.posts)
+    category:Category;
 }

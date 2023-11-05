@@ -74,8 +74,8 @@ export class AuthService {
                 secret: this.configService.get<string>('SECRET')
             })
             console.log(verify);
-            const chechExistToken = await this.userRepository.findOneBy({email:verify.email,refresh_token})
-            if(chechExistToken){
+            const checkExistToken = await this.userRepository.findOneBy({email:verify.email,refresh_token})
+            if(checkExistToken){
                 return this.generateToken({id: verify.id, email: verify.email})
             }else{
                 throw new HttpException('Refresh Token is not valid', HttpStatus.BAD_REQUEST)
